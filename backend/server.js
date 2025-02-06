@@ -29,6 +29,9 @@ app.post("/api/payment", async (req, res) => {
         event: {
           token: recaptchaToken,
           siteKey: RECAPTCHA_SITE_KEY,
+          expectedAction: "payment_add",
+          userIpAddress: req.ip,
+          userAgent: req.get("User-Agent"),
         },
       }
     );
@@ -42,7 +45,9 @@ app.post("/api/payment", async (req, res) => {
     // }
 
     // Proceed with payment processing (dummy response)
-    res.status(200).json({ message: "Payment processed successfully" });
+    res
+      .status(200)
+      .json({ message: "Payment processed successfully", data: response.data });
   } catch (error) {
     console.error("reCAPTCHA verification error:", error);
     res.status(500).json({ message: "Server error" });
