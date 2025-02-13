@@ -28,11 +28,11 @@ app.post("/api/payment", async (req, res) => {
   try {
     // Verify reCAPTCHA token with Google
     const response = await axios.post(
-      `https://recaptchaenterprise.googleapis.com/v1/projects/${PROJECT_ID_2}/assessments?key=${API_KEY_2}`,
+      `https://recaptchaenterprise.googleapis.com/v1/projects/${PROJECT_ID_1}/assessments?key=${API_KEY_1}`,
       {
         event: {
           token: recaptchaToken,
-          siteKey: RECAPTCHA_SITE_KEY_2,
+          siteKey: RECAPTCHA_SITE_KEY_1,
           expectedAction: "purchase",
           userIpAddress: req.ip,
           userAgent: req.get("User-Agent"),
