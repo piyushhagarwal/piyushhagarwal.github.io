@@ -30,7 +30,7 @@
           grecaptcha.enterprise.ready(async () => {
             const token = await grecaptcha.enterprise.execute(
               "6LcrsM4qAAAAAHufQgaJwA5ItJwK0BIJCy51j7n4",
-              { action: "payment_add" }
+              { action: "purchase" }
             );
 
             const paymentData = {
